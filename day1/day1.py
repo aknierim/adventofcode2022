@@ -4,7 +4,7 @@
 elves = []
 total_calories = []
 
-with open("day1/day1.txt") as f:
+with open("example_data/day1.txt") as f:
     lines = f.readlines()
 
     # prerequisites
@@ -39,7 +39,6 @@ print(
 )
 
 # Part 2
-sorted_calories = sorted(total_calories)
-sum_top_three = sum(sorted_calories[-3:])
+total_calories.sort()
 
-print(f"{'Sum of Calories of the top three elves:':<40} {sum_top_three:>10}")
+print(f"{'Sum of Calories of the top three elves:':<40} {sum(total_calories[-3:]):>10}")
