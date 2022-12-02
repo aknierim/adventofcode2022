@@ -1,11 +1,14 @@
 """Advent of Code 2022 Day 1 solution.
 """
-# initialize lists
-elves = []
-total_calories = []
+from aoctools.input import get_input
 
-with open("example_data/day1.txt") as f:
-    lines = f.readlines()
+def main():
+    # Part 1
+    # initialize lists
+    elves = []
+    total_calories = []
+
+    lines = get_input(2022, 1)
 
     # prerequisites
     calories = 0
@@ -15,7 +18,7 @@ with open("example_data/day1.txt") as f:
         # check that the current line is not a new line,
         # else save sum over Calories to total_calories
         # and save elf id
-        if line != "\n":
+        if line != "":
             calories += int(line)
         else:
             total_calories.append(calories)
@@ -30,15 +33,22 @@ with open("example_data/day1.txt") as f:
     elves.append(elf_count)
 
 
-most_calories = max(total_calories)
-elf_id = elves[total_calories.index(most_calories)]
+    most_calories = max(total_calories)
+    elf_id = elves[total_calories.index(most_calories)]
 
-print(
-    f"{'Elf carrying the most Calories:':<40} {elf_id:>10}",
-    f"\n{'Total Calories carried:':<40} {most_calories:>10}"
-)
+    # Part 2
+    total_calories.sort()
 
-# Part 2
-total_calories.sort()
 
-print(f"{'Sum of Calories of the top three elves:':<40} {sum(total_calories[-3:]):>10}")
+    return elf_id, most_calories, sum(total_calories[-3:])
+
+
+
+if __name__ == "__main__":
+    elf_id, most_cals, top_three_cals = main()
+
+    print(
+        f"{'Elf carrying the most Calories:':<40} {elf_id:>10}",
+        f"\n{'Total Calories carried:':<40} {most_cals:>10}",
+        f"\n{'Sum of Calories of the top three elves:':<40} {top_three_cals:>10}"
+    )
