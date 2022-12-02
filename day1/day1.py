@@ -2,6 +2,7 @@
 """
 from aoctools.input import get_input
 
+
 def day1():
     # Part 1
     # initialize lists
@@ -32,16 +33,13 @@ def day1():
     total_calories.append(calories)
     elves.append(elf_count)
 
-
     most_calories = max(total_calories)
     elf_id = elves[total_calories.index(most_calories)]
 
     # Part 2
     total_calories.sort()
 
-
     return elf_id, most_calories, sum(total_calories[-3:])
-
 
 
 if __name__ == "__main__":
@@ -52,3 +50,4 @@ if __name__ == "__main__":
         f"\n{'Total Calories carried:':<40} {most_cals:>10}",
         f"\n{'Sum of Calories of the top three elves:':<40} {top_three_cals:>10}"
     )
+

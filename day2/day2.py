@@ -2,11 +2,12 @@
 """
 from aoctools.input import get_input
 
+
 def day2():
     lines = get_input(2022, 2)
 
     # Part 1
-    score = 0
+    score_p1 = 0
     for line in lines:
         opp, player = line.split()
 
@@ -14,16 +15,14 @@ def day2():
         player = "XYZ".index(player)
 
         if (opp - player == -1) or (opp - player == 2):
-            score += player + 7
+            score_p1 += player + 7
         elif opp - player == 0:
-            score += player + 4
+            score_p1 += player + 4
         else:
-            score += player + 1
-
-    score_p1 = score
+            score_p1 += player + 1
 
     # Part 2
-    score = 0
+    score_p2 = 0
     for line in lines:
         opp, player = line.split()
 
@@ -31,18 +30,17 @@ def day2():
 
         match player:
             case "X":
-                # score for chosen shape + 0 (for losing)
-                score += (opp - 1) % 3 + 1
+                # score_p2 for chosen shape + 0 (for losing)
+                score_p2 += (opp - 1) % 3 + 1
             case "Y":
-                # score equals opponents score + 3 (for draw)
-                score += opp + 4
+                # score_p2 equals opponents score_p2 + 3 (for draw)
+                score_p2 += opp + 4
             case "Z":
-                # score for chosen shape + 6 (for winning)
-                score += (opp + 1) % 3 + 7
-
-    score_p2 = score
+                # score_p2 for chosen shape + 6 (for winning)
+                score_p2 += (opp + 1) % 3 + 7
 
     return score_p1, score_p2
+
 
 if __name__ == "__main__":
     score_p1, score_p2 = day2()

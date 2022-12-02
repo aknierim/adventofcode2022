@@ -4,6 +4,7 @@ import os
 session = os.getenv('AOC_SESSION')
 session_cookie = {'session': str(session)}
 
+
 def get_input(year: int, day: int):
     """Get your puzzle input for a given day and year.
     """
