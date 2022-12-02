@@ -2,7 +2,7 @@
 """
 from aoctools.input import get_input
 
-def main():
+def day1():
     # Part 1
     # initialize lists
     elves = []
@@ -45,7 +45,7 @@ def main():
 
 
 if __name__ == "__main__":
-    elf_id, most_cals, top_three_cals = main()
+    elf_id, most_cals, top_three_cals = day1()
 
     print(
         f"{'Elf carrying the most Calories:':<40} {elf_id:>10}",

@@ -2,7 +2,7 @@
 """
 from aoctools.input import get_input
 
-def main():
+def day2():
     lines = get_input(2022, 2)
 
     # Part 1
@@ -45,7 +45,7 @@ def main():
     return score_p1, score_p2
 
 if __name__ == "__main__":
-    score_p1, score_p2 = main()
+    score_p1, score_p2 = day2()
 
     print(
         f"{'Score for part 1:':<18} {score_p1:>10}",
