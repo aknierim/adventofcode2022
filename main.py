@@ -20,6 +20,6 @@ print(
 sum_p1, sum_p2 = day3()
 print(
     "\nDAY 3:",
-    f"\n{'Σ priorities of the item types (Part 1):':<40} {sum_p1:>10}",
-    f"\n{'Σ priorities of the item types (Part 2):':<40} {sum_p2:>10}"
+    f"\n{f'{chr(931)} priorities of the item types (Part 1):':<40} {sum_p1:>10}",
+    f"\n{f'{chr(931)} priorities of the item types (Part 2):':<40} {sum_p2:>10}"
 )

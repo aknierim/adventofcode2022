@@ -4,10 +4,13 @@
 from aoctools.input import get_input
 
 
-def id_sum(id_mapping, duplicates):
+def id_sum(duplicates):
     summed_ids = 0
     for dup in duplicates:
-        summed_ids += id_mapping[dup]
+        if ord(dup) >= 97:
+            summed_ids += ord(dup) - 96
+        else:
+            summed_ids += ord(dup) - 64 + 26
 
     return summed_ids
 
@@ -15,26 +18,17 @@ def id_sum(id_mapping, duplicates):
 def day3():
     ruck_list = get_input(2022, 3)
 
-    lower_alpha = [chr(i) for i in range(ord('a'), ord('z') + 1)]
-    upper_alpha = [chr(i) for i in range(ord('A'), ord('Z') + 1)]
-    alphabet = lower_alpha + upper_alpha
-
     # Part 1
     duplicates = []
     for item in ruck_list:
-        comp1 = item[len(item)//2:]
-        comp2 = item[:len(item)//2]
-
-        dup = set(comp1).intersection(comp2)
+        # get same elements in both strings
+        dup = set(item[len(item)//2:]).intersection(item[:len(item)//2])
         duplicates.append(''.join(dup))
 
-    id_mapping = {}
-    for idx, alpha in enumerate(alphabet):
-        id_mapping[alpha] = idx + 1
-
-    id_sum_p1 = id_sum(id_mapping, duplicates)
+    id_sum_p1 = id_sum(duplicates)
 
     # Part 2
+    # Create a list of sublists with 3 strings each
     grouped_list = [ruck_list[n:n + 3] for n in range(0, len(ruck_list), 3)]
 
     duplicates_p2 = []
@@ -44,7 +38,7 @@ def day3():
 
         duplicates_p2.append(''.join(dup_all_three))
 
-    id_sum_p2 = id_sum(id_mapping, duplicates_p2)
+    id_sum_p2 = id_sum(duplicates_p2)
 
     return id_sum_p1, id_sum_p2
 
