@@ -1,5 +1,6 @@
 from day1.day1 import day1
 from day2.day2 import day2
+from day3.day3 import day3
 
 elf_id, most_cals, top_three_cals = day1()
 print(
@@ -14,4 +15,11 @@ print(
     "\nDAY 2:"
     f"\n{'Score for part 1:':<40} {score_p1:>10}",
     f"\n{'Score for part 2:':<40} {score_p2:>10}"
+)
+
+sum_p1, sum_p2 = day3()
+print(
+    "\nDAY 3:",
+    f"\n{'Σ priorities of the item types (Part 1):':<40} {sum_p1:>10}",
+    f"\n{'Σ priorities of the item types (Part 2):':<40} {sum_p2:>10}"
 )
