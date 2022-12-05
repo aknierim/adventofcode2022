@@ -3,6 +3,7 @@
 from aoctools.input import get_input
 from aoctools.timelogger import timelogger
 
+
 def id_sum(duplicates):
     summed_ids = 0
     for dup in duplicates:
@@ -12,6 +13,7 @@ def id_sum(duplicates):
             summed_ids += ord(dup) - 64 + 26
 
     return summed_ids
+
 
 @timelogger(2022, 3)
 def day3():

@@ -3,6 +3,7 @@
 from aoctools.input import get_input
 from aoctools.timelogger import timelogger
 
+
 @timelogger(2022, 4)
 def day4():
     pair_list = get_input(2022, 4)

@@ -3,6 +3,7 @@
 from aoctools.input import get_input
 from aoctools.timelogger import timelogger
 
+
 @timelogger(2022, 1)
 def day1():
     # Part 1
@@ -51,4 +52,3 @@ if __name__ == "__main__":
         f"\n{'Total Calories carried:':<40} {most_cals:>10}",
         f"\n{'Sum of Calories of the top three elves:':<40} {top_three_cals:>10}"
     )
-

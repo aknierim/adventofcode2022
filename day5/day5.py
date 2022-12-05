@@ -3,9 +3,9 @@ from aoctools.timelogger import timelogger
 from copy import deepcopy
 
 
-
 def join_str(stack_list: list) -> str:
     return "".join([item[-1] for item in stack_list])
+
 
 @timelogger(2022, 5)
 def day5():
