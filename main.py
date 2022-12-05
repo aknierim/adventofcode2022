@@ -2,6 +2,7 @@ from day1.day1 import day1
 from day2.day2 import day2
 from day3.day3 import day3
 from day4.day4 import day4
+from day5.day5 import day5
 
 elf_id, most_cals, top_three_cals = day1()
 print(
@@ -31,4 +32,11 @@ print(
     f"\n{'Pairs in which one range fully contains':<40}",
     f"\n{'another:':<40} {ans_p1:>10}",
     f"\n{'Number of overlapping ranges:':<40} {ans_p2:>10}"
+)
+
+crates_pt1, crates_pt2 = day5()
+print(
+    "\nDAY 5:",
+    f"\n{'Crates on top of each stack (Part 1):':<40} {crates_pt1:>10}",
+    f"\n{'Crates on top of each stack (Part 2):':<40} {crates_pt2:>10}"
 )
