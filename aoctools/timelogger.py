@@ -11,11 +11,11 @@ RESET = "\x1b[0m"
 
 logging.basicConfig(
     level=logging.INFO,
-    format=YELLOW + '\n\n%(levelname)s: ' + RESET +'%(asctime)s - %(message)s'
+    format=YELLOW + '\n\n%(levelname)s: ' + RESET + '%(asctime)s - %(message)s'
 )
 
 
-def timelogger(year: int=0, day: int=0, part: int=None):
+def timelogger(year: int = 0, day: int = 0, part: int | None = None):
     """Decorator to time the execution of a function.
 
     Parameters:
@@ -24,8 +24,9 @@ def timelogger(year: int=0, day: int=0, part: int=None):
             The year of the AoC puzzle.
         day: int
             The day of the AoC puzzle.
-        part: int
-            The part of the AoC puzzle (optional).
+        part: int or None
+            The part of the AoC puzzle (optional). If set to None,
+            part will not be printed.
     """
     def decorator(func):
         def wrapper(*args, **kwargs):
@@ -42,7 +43,7 @@ def timelogger(year: int=0, day: int=0, part: int=None):
                 else:
                     time_taken = RED + f"{time_taken:.2f} " + RESET + "s"
 
-                if part == None:
+                if part is None:
                     logging.info(
                         f"AoC {year}, Day {day}: {func.__name__}() took {time_taken}"
                     )
@@ -56,3 +57,4 @@ def timelogger(year: int=0, day: int=0, part: int=None):
                 return result
         return wrapper
     return decorator
+
