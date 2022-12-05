@@ -1,11 +1,13 @@
 from aoctools.input import get_input
+from aoctools.timelogger import timelogger
 from copy import deepcopy
+
 
 
 def join_str(stack_list: list) -> str:
     return "".join([item[-1] for item in stack_list])
 
-
+@timelogger(2022, 5)
 def day5():
     input_list = get_input(2022, 5)
     crates = input_list[:input_list.index('')]

@@ -1,8 +1,7 @@
 """Advent of Code 2022 Day 3 solution.
 """
-
 from aoctools.input import get_input
-
+from aoctools.timelogger import timelogger
 
 def id_sum(duplicates):
     summed_ids = 0
@@ -14,7 +13,7 @@ def id_sum(duplicates):
 
     return summed_ids
 
-
+@timelogger(2022, 3)
 def day3():
     ruck_list = get_input(2022, 3)
 

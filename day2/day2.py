@@ -1,8 +1,9 @@
 """Advent of Code 2022 Day 2 solution.
 """
 from aoctools.input import get_input
+from aoctools.timelogger import timelogger
 
-
+@timelogger(2022, 2)
 def day2():
     lines = get_input(2022, 2)
 
