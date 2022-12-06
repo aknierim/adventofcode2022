@@ -3,6 +3,7 @@ from day2.day2 import day2
 from day3.day3 import day3
 from day4.day4 import day4
 from day5.day5 import day5
+from day6.day6 import day6
 
 if __name__ == "__main__":
 
@@ -41,4 +42,13 @@ if __name__ == "__main__":
         "DAY 5:",
         f"\n{'Crates on top of each stack (Part 1):':<40} {crates_pt1:>10}",
         f"\n{'Crates on top of each stack (Part 2):':<40} {crates_pt2:>10}"
+    )
+
+    ans1, ans2 = day6()
+    print(
+        "DAY 6:"
+        f"\n{'Characters needed to be processed':<40}",
+        f"\n{'before start-of-message (Part 1):':<40} {ans1:>10}",
+        f"\n{'Characters needed to be processed':<40}",
+        f"\n{'before start-of-message (Part 2):':<40} {ans2:>10}"
     )
