@@ -4,6 +4,8 @@ from day3.day3 import day3
 from day4.day4 import day4
 from day5.day5 import day5
 from day6.day6 import day6
+from day7.day7 import day7
+
 
 if __name__ == "__main__":
 
@@ -51,4 +53,13 @@ if __name__ == "__main__":
         f"\n{'before start-of-message (Part 1):':<40} {ans1:>10}",
         f"\n{'Characters needed to be processed':<40}",
         f"\n{'before start-of-message (Part 2):':<40} {ans2:>10}"
+    )
+
+    ans1, ans2 = day7()
+    print(
+        "DAY 7:"
+        f"\n{'Sum of total sizes of all directories':40}",
+        f"\n{'with a total of at most 100000:':<40} {ans1:>10}",
+        f"\n{'Total size of smallest directory to':<40}",
+        f"\n{'delete:':<40} {ans2:>10}"
     )
