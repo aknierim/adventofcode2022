@@ -2,95 +2,78 @@
 """
 from aoctools.input import get_input
 from aoctools.timelogger import timelogger
-
-
-def move_head(direction, position):
-    match direction:
-        case "U":
-            position[1] += 1
-            return position
-        case "D":
-            position[1] -= 1
-            return position
-        case "L":
-            position[0] -= 1
-            return position
-        case "R":
-            position[0] += 1
-            return position
-
-
-def move_tail(head_pos, tail_pos):
-    diff_x, diff_y = list(map(int.__sub__, head_pos, tail_pos))
-
-    if abs(diff_x) <= 1 and abs(diff_y) <= 1:
-        return tail_pos
-
-    if diff_x >= 1:
-        tail_pos[0] += 1
-    if diff_x <= -1:
-        tail_pos[0] -= 1
-    if diff_y >= 1:
-        tail_pos[1] += 1
-    if diff_y <= -1:
-        tail_pos[1] -= 1
-
-    return tail_pos
-
+import pandas as pd
 
 class RopeBridge():
 
     __slots__ = (
         "input",
-        "rope"
+        "rope",
+        "visited"
     )
 
     def __init__(self, input):
         self.input = input
         self.rope = [[0, 0] for _ in range(10)]
+        self.visited = [[] for _ in range(10)]
 
-    @timelogger(2022, 9, part=1)
-    def part1(self):
-        head_pos = [0, 0]
-        tail_pos = [0, 0]
-        visited = []
-
+    @timelogger(2022, 9)
+    def pos_tracker(self):
         for instruction in self.input:
             dir, steps = instruction.split()
 
             for _ in range(int(steps)):
-                head_pos = move_head(dir, head_pos)
-                tail_pos = move_tail(head_pos, tail_pos)
-                visited.append(tail_pos.copy())
-
-        visited_once = [list(x) for x in set(tuple(x) for x in visited)]
-
-        return len(visited_once)
-
-    @timelogger(2022, 9, part=2)
-    def part2(self):
-        visited = []
-
-        for instruction in self.input:
-            dir, steps = instruction.split()
-
-            for _ in range(int(steps)):
-                self.rope[0] = move_head(dir, self.rope[0])
+                self.rope[0] = self.move_head(dir, self.rope[0])
+                self.visited[0].append(self.rope[0].copy())
 
                 for knot, _ in enumerate(self.rope[1:]):
-                    self.rope[knot + 1] = move_tail(self.rope[knot], self.rope[knot + 1])
-                    visited.append(self.rope[-1].copy())
+                    self.rope[knot + 1] = self.move_tail(self.rope[knot], self.rope[knot + 1])
+                    self.visited[knot + 1].append(self.rope[knot + 1].copy())
 
-        visited_once = [list(x) for x in set(tuple(x) for x in visited)]
+        return self.visited
 
-        return len(visited_once)
+    def move_head(self, direction, position):
+        match direction:
+            case "U":
+                position[1] += 1
+            case "D":
+                position[1] -= 1
+            case "L":
+                position[0] -= 1
+            case "R":
+                position[0] += 1
+
+        return position
+
+    def move_tail(self, head_pos, tail_pos):
+        diff_x, diff_y = list(map(int.__sub__, head_pos, tail_pos))
+
+        if abs(diff_x) <= 1 and abs(diff_y) <= 1:
+            return tail_pos
+
+        if diff_x >= 1:
+            tail_pos[0] += 1
+        if diff_x <= -1:
+            tail_pos[0] -= 1
+        if diff_y >= 1:
+            tail_pos[1] += 1
+        if diff_y <= -1:
+            tail_pos[1] -= 1
+
+        return tail_pos
+
+
+def visited_once(visited_list, idx):
+    return len([list(x) for x in set(tuple(x) for x in visited_list[idx])])
 
 
 def day9():
     input = get_input(2022, 9)
+    
     ropes = RopeBridge(input)
+    visited = ropes.pos_tracker()
 
-    return ropes.part1(), ropes.part2()
+    return visited_once(visited, 1), visited_once(visited, -1)
 
 
 if __name__ == "__main__":
