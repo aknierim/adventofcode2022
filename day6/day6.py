@@ -1,3 +1,5 @@
+"""Advent of Code 2022 Day 6 solution
+"""
 from aoctools.input import get_input
 from aoctools.timelogger import timelogger
 
