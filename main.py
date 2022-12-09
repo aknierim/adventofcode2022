@@ -6,7 +6,7 @@ from day5.day5 import day5
 from day6.day6 import day6
 from day7.day7 import day7
 from day8.day8 import day8
-
+from day9.day9 import day9
 
 if __name__ == "__main__":
 
@@ -70,4 +70,11 @@ if __name__ == "__main__":
         f"DAY 8",
         f"\n{'Trees visible from outside the grid:':<40} {ans1:>10}",
         f"\n{'Highest scenic score possible:':<40} {ans2:>10}"
+    )
+
+    ans1, ans2 = day9()
+    print(
+        "DAY 9:"
+        f"\n{'# of positions visited at least once (Part 1):':<40} {ans1:>10}",
+        f"\n{'# of positions visited at least once (Part 2):':<40} {ans2:>10}"
     )
