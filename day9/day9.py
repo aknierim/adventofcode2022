@@ -49,7 +49,7 @@ class RopeBridge():
         self.input = input
         self.rope = [[0, 0] for _ in range(10)]
 
-    @timelogger(2022, 9)
+    @timelogger(2022, 9, part=1)
     def part1(self):
         head_pos = [0, 0]
         tail_pos = [0, 0]
@@ -67,7 +67,7 @@ class RopeBridge():
 
         return len(visited_once)
 
-    @timelogger(2022, 9)
+    @timelogger(2022, 9, part=2)
     def part2(self):
         visited = []
 
