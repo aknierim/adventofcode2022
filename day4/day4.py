@@ -1,4 +1,4 @@
-"""Adevnt of Code 2022 Day 4 solution
+"""Advent of Code 2022 Day 4 solution
 """
 from aoctools.input import get_input
 from aoctools.timelogger import timelogger
