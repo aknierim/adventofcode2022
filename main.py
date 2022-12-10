@@ -1,4 +1,5 @@
 from day1.day1 import day1
+from day10.day10 import day10
 from day2.day2 import day2
 from day3.day3 import day3
 from day4.day4 import day4
@@ -77,4 +78,10 @@ if __name__ == "__main__":
         "DAY 9:"
         f"\n{'# of positions visited at least once (Part 1):':<40} {ans1:>10}",
         f"\n{'# of positions visited at least once (Part 2):':<40} {ans2:>10}"
+    )
+
+    ans1 =  day10()
+    print(
+        "DAY 10:"
+        f"\n{'Sum of the signal strengths:':<40} {ans1:>10}"
     )
