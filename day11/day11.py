@@ -1,6 +1,6 @@
 """Advent of Code Day 11 solution
 """
-# from aoctools.input import get_input
+from aoctools.input import get_input
 from aoctools.timelogger import timelogger
 
 
@@ -38,7 +38,7 @@ class MonkeyTrouble():
 
         # part 2
         self.business_dict_2 = {i: 0 for i, _ in enumerate(input)}
-        self.new_divisor = multiply_list([monkey["divisor"] for monkey in self.monkeys])
+        self.new_divisor = multiply_list([monkey["divisor"] for monkey in self.monkeys_2])
 
     def monkey_stats(self, lines):
         """Creates a dict with all monkey stats from the input.
@@ -46,7 +46,6 @@ class MonkeyTrouble():
         Very helpful here: https://stackoverflow.com/a/9686074,
         also learned some more about the usage of lambda functions
         """
-
         monkey_dict = {
             "items": [int(x) for x in lines[1].replace(":", " ").replace(",", " ").split()[2:]],
             "operation": lambda old: eval(lines[2].split("new = ")[1]),
@@ -57,12 +56,13 @@ class MonkeyTrouble():
                 False: int(lines[5].split("monkey ")[1]),
             }
         }
+
         return monkey_dict
 
     @timelogger(2022, 11, part=1)
     def part1(self, rounds):
         for _ in range(rounds):
-            for idx, monkey in enumerate(self.monkeys_2):
+            for idx, monkey in enumerate(self.monkeys):
                 for item in monkey["items"]:
                     self.business_dict[idx] += 1
 
@@ -70,7 +70,7 @@ class MonkeyTrouble():
                     test = monkey["test"](new)
                     throw_to = monkey["cond"][test]
 
-                    self.monkeys_2[throw_to]["items"].append(new)
+                    self.monkeys[throw_to]["items"].append(new)
                 monkey["items"] = []
 
         most_active_two = [*self.business_dict.values()]
@@ -81,7 +81,7 @@ class MonkeyTrouble():
     @timelogger(2022, 11, part=2)
     def part2(self, rounds):
         for _ in range(rounds):
-            for idx, monkey in enumerate(self.monkeys):
+            for idx, monkey in enumerate(self.monkeys_2):
                 for item in monkey["items"]:
                     self.business_dict_2[idx] += 1
 
@@ -89,7 +89,7 @@ class MonkeyTrouble():
                     test = monkey["test"](new)
                     throw_to = monkey["cond"][test]
 
-                    self.monkeys[throw_to]["items"].append(new)
+                    self.monkeys_2[throw_to]["items"].append(new)
                 monkey["items"] = []
 
         most_active_two = [*self.business_dict_2.values()]
@@ -99,9 +99,7 @@ class MonkeyTrouble():
 
 
 def day11():
-    # will use get_input() later, but I'm hungry rn :D
-    with open("day11/day11.txt") as f:
-        input = f.read().split("\n\n")
+    input = get_input(2022, 11, split_lines=False).split("\n\n")
 
     trouble = MonkeyTrouble(input)
 
@@ -111,4 +109,7 @@ def day11():
 if __name__ == "__main__":
     ans1, ans2 = day11()
 
-    print(ans1, ans2)
+    print(
+        f"{'Monkey business level after 20 rounds:':<40} {ans1:>10}",
+        f"\n{'Monkey business level after 10,000 rounds:':<40}{ans2:>10}"
+    )
