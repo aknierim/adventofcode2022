@@ -45,7 +45,7 @@ def timelogger(year: int = 0, day: int = 0, part: int | None = None):
 
                 if part is None:
                     logging.info(
-                        f"AoC {year}, Day {day}: {func.__name__}() took {time_taken}"
+                        f"AoC {year}, Day {day}:               {func.__name__}() took {time_taken}"
                     )
                 else:
                     logging.info(
