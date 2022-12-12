@@ -18,9 +18,9 @@ def day10():
         global signal, cycle, pixels
 
         if cycle % 40 in [x - 1, x, x + 1]:
-            pixels += f'{chr(9632)}'
+            pixels += f'{chr(127873)}'
         else:
-            pixels += " "
+            pixels += f'{chr(127876)}'
 
         cycle += 1
         if cycle in [20, 60, 100, 140, 180, 220]:
